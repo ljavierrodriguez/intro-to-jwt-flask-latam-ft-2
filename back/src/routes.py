@@ -90,4 +90,20 @@ def get_profile():
 @api.route('/profile', methods=['PUT'])
 @jwt_required() # ruta protegida
 def update_profile():
-    pass
+    id = get_jwt_identity() # 1
+    user = User.query.get(id)
+    data = request.get_json()
+
+    user.profile.biography = data['biography'] if 'biography' in data else user.profile.biography
+    user.profile.github = data['github'] if 'github' in data else user.profile.github
+    user.profile.facebook = data['facebook'] if 'facebook' in data else user.profile.facebook
+    user.profile.instagram = data['instagram'] if 'instagram' in data else user.profile.instagram
+    user.profile.twitter = data['twitter'] if 'twitter' in data else user.profile.twitter
+
+    user.save()
+    
+    return jsonify({
+        "status": "success",
+        "message": "Profile updated!", 
+        "user": user.serialize() 
+    }), 200
