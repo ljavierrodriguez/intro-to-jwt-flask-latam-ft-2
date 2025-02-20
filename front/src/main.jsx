@@ -1,10 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+// CSS Bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css'
+// CSS Bootstrap Icons
+import 'bootstrap-icons/font/bootstrap-icons.min.css'
+// JS Bootstrap
+import 'bootstrap/dist/js/bootstrap.bundle.min'
+
+import Layout from './Layout'
+
+ReactDOM.createRoot(document.getElementById('root')).render(<Layout />)

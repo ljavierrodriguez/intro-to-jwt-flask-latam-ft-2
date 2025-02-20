@@ -68,12 +68,10 @@ def login():
 
     datos = {
         "access_token": access_token,
-        "user": user.serialize()
+        #"user": user.serialize()
     }
 
     return jsonify(datos), 200
-
-
 
 @api.route('/profile', methods=['GET'])
 @jwt_required() # ruta protegida
